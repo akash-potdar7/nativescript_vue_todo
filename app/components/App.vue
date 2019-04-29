@@ -1,8 +1,8 @@
 <template>
     <Page>
         <StackLayout>
-            <Label :text="messageTitle" textWrap="true"></Label>
-            <Label :text="actionMessage" textWrap="true"></Label>
+            <Label :text="messageTitle"></Label>
+            <Label :text="actionMessage"></Label>
             <Button text="See FAQs" @tap="routeToFAQsPage"></Button>
         </StackLayout>
     </Page>
@@ -35,9 +35,5 @@ import FAQs from './FAQs.vue';
   }
 </script>
 <style lang="scss" scoped>
-    .page {
-        align-items: center;
-        flex-direction: column;
-    }
 </style>
 
