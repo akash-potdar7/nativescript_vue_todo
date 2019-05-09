@@ -1,0 +1,104 @@
+{
+    "top_faqs": [
+      {
+        "id": 117,
+        "question": "Who are Airim's founders?",
+        "answer": "<p>Airim team comprises of Sales Strategy and Data Science professionals with prior experience in fast-growing startups as well as Fortune 100 companies.</p>",
+        "tags": [
+          "cxo",
+          "cto",
+          "ceo",
+          "directors"
+        ],
+        "account_id": 1059401424129564,
+        "category_id": 1517,
+        "rank": null,
+        "actions": [
+          {
+            "link_type": "web_url",
+            "web_url": "https://www.linkedin.com/company/13299648/admin/",
+            "action_id": 1151,
+            "widget_id": null,
+            "label": "View Team Page"
+          }
+        ]
+      },
+      {
+        "id": 2998,
+        "question": "Can I integrate multiple knowledge bases within the same subscription?",
+        "answer": "<p><span style=\"color: rgb(74, 74, 74);\">Yes, it is possible. Simply click Import in your Content Manager and add your knowledge bases one-by-one. You can also add more FAQs one-by-one manually after importing your entire knowledge base content.</span></p>",
+        "tags": [],
+        "account_id": 1059401424129564,
+        "category_id": 2217,
+        "rank": null,
+        "actions": [
+          {
+            "link_type": "web_url",
+            "web_url": "https://app.airim.co/home/faqsManager/",
+            "action_id": 1308,
+            "widget_id": null,
+            "label": "Import Now"
+          }
+        ]
+      },
+      {
+        "id": 2874,
+        "question": "How do I create multiple accounts?",
+        "answer": "<p>If you run an agency, or handle multiple websites, you can sign up with different emails for each account. Once you have done that, just write to hi@airim.co and we will link all your accounts, so that you can login with one email address for all accounts.</p>",
+        "tags": [],
+        "account_id": 1059401424129564,
+        "category_id": 2217,
+        "rank": null,
+        "actions": [
+          {
+            "link_type": "web_url",
+            "web_url": "https://app.airim.co/signup",
+            "action_id": 1152,
+            "widget_id": null,
+            "label": "Start Now for Free"
+          }
+        ]
+      },
+      {
+        "id": 99,
+        "question": "What is Airim used for?",
+        "answer": "<p>Airim saves time for your users by surfacing the right FAQ for them at the right time.</p><p>Website visitors love interacting with Airim as it helps them explore websites with ease. And CXOs love it because it saves time for their customers.</p><p>Airim's analytics is immensely powerful, and product marketers use it to know what their customers are looking for, what excites them and what makes them lose interest.</p>",
+        "tags": [
+          "What is Airim",
+          "what is the use"
+        ],
+        "account_id": 1059401424129564,
+        "category_id": 1517,
+        "rank": null,
+        "actions": [
+          {
+            "link_type": "web_url",
+            "web_url": "https://app.airim.co/signup",
+            "action_id": 300,
+            "widget_id": 0,
+            "label": "Start Now for Free"
+          }
+        ]
+      },
+      {
+        "id": 115,
+        "question": "How long will it take to set up?",
+        "answer": "<p>Less than a minute actually. Just sign up, provide your knowledge base URL and embed your unique Airim in your website or product.</p>",
+        "tags": [
+          "time"
+        ],
+        "account_id": 1059401424129564,
+        "category_id": 1517,
+        "rank": null,
+        "actions": [
+          {
+            "link_type": "web_url",
+            "web_url": "https://app.airim.co/signup",
+            "action_id": 301,
+            "widget_id": 0,
+            "label": "Start Now for Free"
+          }
+        ]
+      }
+    ]
+  }
