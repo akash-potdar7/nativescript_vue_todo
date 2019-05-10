@@ -6,12 +6,17 @@
                 <FlexboxLayout v-if="isBusy" flexDirection="column" justifyContent="space-around">
                     <ActivityIndicator :busy="isBusy" alignSelf="center" width="40" height="40" />
                 </FlexboxLayout>
-                <ListView class="list-group" v-for="(faq, index) in faqs" :key="index" marginTop="10" backgroundColor="#f8f8f8">
+                <ListView class="list-group" v-for="(faq, index) in faqs" :key="index" marginTop="10">
                     <v-template>
                         <GridLayout orientation="horizontal" class="list-group-item" rows="auto" columns="auto,*,auto">
-                            <StackLayout col="1" row="0" height="100" marginLeft="16" padding="8">
-                                <Label marginTop="4" paddingRight="4" :text="faq.question" class="list-group-item-heading font-weight-bold" color="#333333"></Label>
-                                <HtmlView textWrap="true" class="p-10" marginTop="4" :html="faq.answer" color="#999999"></HtmlView>
+                            <StackLayout col="1" row="0" marginLeft="16" padding="8">
+                                <Label marginTop="4" textWrap="true" paddingRight="4" :text="faq.question" class="list-group-item-heading font-weight-bold" color="#333333"></Label>
+                                <ScrollView height="40">
+                                    <HtmlView textWrap="true" class="p-10" marginTop="4" :html="faq.answer" color="#999999"></HtmlView>
+                                </ScrollView>
+                                <FlexboxLayout margin="0" padding="0" flexDirection="row" justifyContent="space-around" alignItems="flex-start">
+                                    <Button borderRadius="10" fontSize="12" color="#333333" v-for="(action, key) in faq.actions" :key="key" :text="action.label" @tap="onCTAClick(faq.actions[0])"/>
+                                </FlexboxLayout>
                             </StackLayout>
                         </GridLayout>
                     </v-template>
@@ -52,6 +57,11 @@ import axios from "axios";
             this.isBusy = !this.isBusy;
         }
 
+        onCTAClick(action: any) {
+            console.log(action);
+            alert(action.label);
+        }
+
         private async initFetch() {
             this.toggleSpinner();
             await this.fetchTopFAQs();
@@ -66,7 +76,7 @@ import axios from "axios";
                                 {
                                     "id": 117,
                                     "question": "Who are Airim's founders?",
-                                    "answer": "<p>Airim team comprises of Sales Strategy and Data Science professionals with prior experience in fast-growing startups as well as Fortune 100 companies.</p>",
+                                    "answer": "<p>If you run an agency, or handle multiple websites, you can sign up with different emails for each account. Once you have done that, just write to hi@airim.co and we will link all your accounts, so that you can login with one email address for all accounts.</p>",
                                     "tags": [
                                     "cxo",
                                     "cto",
@@ -77,13 +87,20 @@ import axios from "axios";
                                     "category_id": 1517,
                                     "rank": null,
                                     "actions": [
-                                    {
-                                        "link_type": "web_url",
-                                        "web_url": "https://www.linkedin.com/company/13299648/admin/",
-                                        "action_id": 1151,
-                                        "widget_id": null,
-                                        "label": "View Team Page"
-                                    }
+                                        {
+                                            "link_type": "web_url",
+                                            "web_url": "https://www.linkedin.com/company/13299648/admin/",
+                                            "action_id": 1151,
+                                            "widget_id": null,
+                                            "label": "View Team Page"
+                                        },
+                                        {
+                                            "link_type": "web_url",
+                                            "web_url": "https://app.airim.co/home/faqsManager/",
+                                            "action_id": 1308,
+                                            "widget_id": null,
+                                            "label": "Import Now"
+                                        }
                                     ]
                                 },
                                 {
@@ -95,13 +112,13 @@ import axios from "axios";
                                     "category_id": 2217,
                                     "rank": null,
                                     "actions": [
-                                    {
-                                        "link_type": "web_url",
-                                        "web_url": "https://app.airim.co/home/faqsManager/",
-                                        "action_id": 1308,
-                                        "widget_id": null,
-                                        "label": "Import Now"
-                                    }
+                                        {
+                                            "link_type": "web_url",
+                                            "web_url": "https://app.airim.co/home/faqsManager/",
+                                            "action_id": 1308,
+                                            "widget_id": null,
+                                            "label": "Import Now"
+                                        }
                                     ]
                                 },
                                 {
@@ -113,13 +130,13 @@ import axios from "axios";
                                     "category_id": 2217,
                                     "rank": null,
                                     "actions": [
-                                    {
-                                        "link_type": "web_url",
-                                        "web_url": "https://app.airim.co/signup",
-                                        "action_id": 1152,
-                                        "widget_id": null,
-                                        "label": "Start Now for Free"
-                                    }
+                                        {
+                                            "link_type": "web_url",
+                                            "web_url": "https://app.airim.co/signup",
+                                            "action_id": 1152,
+                                            "widget_id": null,
+                                            "label": "Start Now for Free"
+                                        }
                                     ]
                                 },
                                 {
@@ -134,13 +151,13 @@ import axios from "axios";
                                     "category_id": 1517,
                                     "rank": null,
                                     "actions": [
-                                    {
-                                        "link_type": "web_url",
-                                        "web_url": "https://app.airim.co/signup",
-                                        "action_id": 300,
-                                        "widget_id": 0,
-                                        "label": "Start Now for Free"
-                                    }
+                                        {
+                                            "link_type": "web_url",
+                                            "web_url": "https://app.airim.co/signup",
+                                            "action_id": 300,
+                                            "widget_id": 0,
+                                            "label": "Start Now for Free"
+                                        }
                                     ]
                                 },
                                 {
@@ -154,18 +171,18 @@ import axios from "axios";
                                     "category_id": 1517,
                                     "rank": null,
                                     "actions": [
-                                    {
-                                        "link_type": "web_url",
-                                        "web_url": "https://app.airim.co/signup",
-                                        "action_id": 301,
-                                        "widget_id": 0,
-                                        "label": "Start Now for Free"
-                                    }
+                                        {
+                                            "link_type": "web_url",
+                                            "web_url": "https://app.airim.co/signup",
+                                            "action_id": 301,
+                                            "widget_id": 0,
+                                            "label": "Start Now for Free"
+                                        }
                                     ]
                                 }
                                 ]
                             };
-                            this.faqs = faqs.top_faqs;
+                    this.faqs = faqs.top_faqs;
                     console.log('faqs', response.data);
                 })
                 .catch(error => {
