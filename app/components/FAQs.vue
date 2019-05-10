@@ -11,9 +11,7 @@
                         <GridLayout orientation="horizontal" class="list-group-item" rows="auto" columns="auto,*,auto">
                             <StackLayout col="1" row="0" marginLeft="16" padding="8">
                                 <Label marginTop="4" textWrap="true" paddingRight="4" :text="faq.question" class="list-group-item-heading font-weight-bold" color="#333333"></Label>
-                                <ScrollView height="40">
-                                    <HtmlView textWrap="true" class="p-10" marginTop="4" :html="faq.answer" color="#999999"></HtmlView>
-                                </ScrollView>
+                                <HtmlView textWrap="true" class="p-10" marginTop="4" :html="faq.answer" color="#999999"></HtmlView>
                                 <FlexboxLayout margin="0" padding="0" flexDirection="row" justifyContent="space-around" alignItems="flex-start">
                                     <Button borderRadius="10" fontSize="12" color="#333333" v-for="(action, key) in faq.actions" :key="key" :text="action.label" @tap="onCTAClick(faq.actions[0])"/>
                                 </FlexboxLayout>
@@ -30,6 +28,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import App from './App.vue';
 import axios from "axios";
+import * as utils from "tns-core-modules/utils/utils";
 
     @Component({})
     export default class FAQs extends Vue {
@@ -58,8 +57,7 @@ import axios from "axios";
         }
 
         onCTAClick(action: any) {
-            console.log(action);
-            alert(action.label);
+            utils.openUrl(action.web_url)
         }
 
         private async initFetch() {
@@ -192,11 +190,3 @@ import axios from "axios";
 
     }
 </script>
-<style lang="scss" scoped>
-    .message {
-        vertical-align: center;
-        text-align: center;
-        font-size: 20;
-        color: #333333;
-    }
-</style>
