@@ -2,19 +2,21 @@
     <Page class="page" actionBarHidden="true" backgroundSpanUnderStatusBar="true">
 		<GridLayout orientation="vertical" width="100%" height="100%" columns="*" rows="*,auto">
 			<StackLayout col="0" row="0" backgroundColor="#f8f8f8">
-                <Label class="font-weight-bold" marginTop="10" paddingLeft="10" fontSize="20" color="#333333" :text="headline"></Label>
                 <FlexboxLayout v-if="isBusy" flexDirection="column" justifyContent="space-around">
                     <ActivityIndicator :busy="isBusy" alignSelf="center" width="40" height="40" />
                 </FlexboxLayout>
-                <ListView class="list-group" v-for="(faq, index) in faqs" :key="index" marginTop="10">
+                <Label class="font-weight-bold" marginTop="10" paddingLeft="10" fontSize="20" color="#333333" :text="headline"></Label>
+                <ListView ref="faqsListView" class="list-group" for="(faq, index) in faqs" :key="index" marginTop="10">
                     <v-template>
                         <GridLayout orientation="horizontal" class="list-group-item" rows="auto" columns="auto,*,auto">
-                            <StackLayout col="1" row="0" marginLeft="16" padding="8">
+                            <StackLayout @tap="onTap(index)" col="1" row="0" marginLeft="16" padding="8">
                                 <Label marginTop="4" textWrap="true" paddingRight="4" :text="faq.question" class="list-group-item-heading font-weight-bold" color="#333333"></Label>
-                                <HtmlView textWrap="true" class="p-10" marginTop="4" :html="faq.answer" color="#999999"></HtmlView>
-                                <FlexboxLayout margin="0" padding="0" flexDirection="row" justifyContent="space-around" alignItems="flex-start">
-                                    <Button borderRadius="10" fontSize="12" color="#333333" v-for="(action, key) in faq.actions" :key="key" :text="action.label" @tap="onCTAClick(faq.actions[0])"/>
-                                </FlexboxLayout>
+                                <StackLayout :visibility="index == expIndex  ? 'visible' : 'collapse'">
+                                    <HtmlView textWrap="true" class="p-10" marginTop="4" :html="faq.answer" color="#999999"></HtmlView>
+                                    <FlexboxLayout margin="0" padding="0" flexDirection="row" justifyContent="space-around" alignItems="flex-start">
+                                        <Button borderRadius="10" fontSize="12" color="#333333" v-for="(action, key) in faq.actions" :key="key" :text="action.label" @tap="onCTAClick(faq.actions[0])"/>
+                                    </FlexboxLayout>
+                                </StackLayout>
                             </StackLayout>
                         </GridLayout>
                     </v-template>
@@ -37,6 +39,8 @@ import * as utils from "tns-core-modules/utils/utils";
         private isBusy: boolean = false;
         private headline: string;
 
+        private expIndex: number = -1;
+
         constructor() {
             super();
             this.headline = "Frequently asked questions";
@@ -54,6 +58,12 @@ import * as utils from "tns-core-modules/utils/utils";
 
         toggleSpinner() {
             this.isBusy = !this.isBusy;
+        }
+
+        onTap(index: number) {
+            console.log(index);
+            this.expIndex = (index == this.expIndex) ? -1 : index;
+            this.$refs.faqsListView.refresh();
         }
 
         onCTAClick(action: any) {
